@@ -40,7 +40,7 @@
             // lblHeadline
             // 
             this.lblHeadline.AutoSize = true;
-            this.lblHeadline.Location = new System.Drawing.Point(168, 25);
+            this.lblHeadline.Location = new System.Drawing.Point(221, 23);
             this.lblHeadline.Name = "lblHeadline";
             this.lblHeadline.Size = new System.Drawing.Size(338, 20);
             this.lblHeadline.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             // txtBoxNumber
             // 
-            this.txtBoxNumber.Location = new System.Drawing.Point(285, 80);
+            this.txtBoxNumber.Location = new System.Drawing.Point(314, 80);
             this.txtBoxNumber.Name = "txtBoxNumber";
             this.txtBoxNumber.Size = new System.Drawing.Size(100, 26);
             this.txtBoxNumber.TabIndex = 1;
@@ -91,7 +91,7 @@
             // 
             // btnCheckChecksum
             // 
-            this.btnCheckChecksum.Location = new System.Drawing.Point(571, 80);
+            this.btnCheckChecksum.Location = new System.Drawing.Point(548, 80);
             this.btnCheckChecksum.Name = "btnCheckChecksum";
             this.btnCheckChecksum.Size = new System.Drawing.Size(75, 26);
             this.btnCheckChecksum.TabIndex = 6;
