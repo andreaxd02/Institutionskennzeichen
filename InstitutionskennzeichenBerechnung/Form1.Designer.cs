@@ -32,9 +32,10 @@
             this.txtBoxNumber = new System.Windows.Forms.TextBox();
             this.lblChecksumDesignation = new System.Windows.Forms.Label();
             this.lblChecksum = new System.Windows.Forms.Label();
-            this.lblCorrectChecksum = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
             this.btnCalculateChecksum = new System.Windows.Forms.Button();
-            this.btnCheckChecksum = new System.Windows.Forms.Button();
+            this.btnRestart = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblHeadline
@@ -71,14 +72,14 @@
             this.lblChecksum.TabIndex = 3;
             this.lblChecksum.Text = "Prüfsumme";
             // 
-            // lblCorrectChecksum
+            // lblResult
             // 
-            this.lblCorrectChecksum.AutoSize = true;
-            this.lblCorrectChecksum.Location = new System.Drawing.Point(455, 125);
-            this.lblCorrectChecksum.Name = "lblCorrectChecksum";
-            this.lblCorrectChecksum.Size = new System.Drawing.Size(191, 20);
-            this.lblCorrectChecksum.TabIndex = 4;
-            this.lblCorrectChecksum.Text = "Die Prüfsumme ist korrekt";
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(455, 125);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(191, 20);
+            this.lblResult.TabIndex = 4;
+            this.lblResult.Text = "Die Prüfsumme ist korrekt";
             // 
             // btnCalculateChecksum
             // 
@@ -89,23 +90,33 @@
             this.btnCalculateChecksum.Text = "Berechnen";
             this.btnCalculateChecksum.UseVisualStyleBackColor = true;
             // 
-            // btnCheckChecksum
+            // btnRestart
             // 
-            this.btnCheckChecksum.Location = new System.Drawing.Point(548, 80);
-            this.btnCheckChecksum.Name = "btnCheckChecksum";
-            this.btnCheckChecksum.Size = new System.Drawing.Size(75, 26);
-            this.btnCheckChecksum.TabIndex = 6;
-            this.btnCheckChecksum.Text = "Prüfen";
-            this.btnCheckChecksum.UseVisualStyleBackColor = true;
+            this.btnRestart.Location = new System.Drawing.Point(549, 78);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(75, 31);
+            this.btnRestart.TabIndex = 6;
+            this.btnRestart.Text = "Neu";
+            this.btnRestart.UseVisualStyleBackColor = true;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(695, 388);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 36);
+            this.btnClose.TabIndex = 7;
+            this.btnClose.Text = "Beenden";
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnCheckChecksum);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.btnCalculateChecksum);
-            this.Controls.Add(this.lblCorrectChecksum);
+            this.Controls.Add(this.lblResult);
             this.Controls.Add(this.lblChecksum);
             this.Controls.Add(this.lblChecksumDesignation);
             this.Controls.Add(this.txtBoxNumber);
@@ -123,9 +134,10 @@
         private System.Windows.Forms.TextBox txtBoxNumber;
         private System.Windows.Forms.Label lblChecksumDesignation;
         private System.Windows.Forms.Label lblChecksum;
-        private System.Windows.Forms.Label lblCorrectChecksum;
+        private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Button btnCalculateChecksum;
-        private System.Windows.Forms.Button btnCheckChecksum;
+        private System.Windows.Forms.Button btnRestart;
+        private System.Windows.Forms.Button btnClose;
     }
 }
 
