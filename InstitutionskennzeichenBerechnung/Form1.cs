@@ -54,26 +54,6 @@ namespace InstitutionskennzeichenBerechnung
             checksum = calculateChecksum(IKNumber);
             lblChecksum.Text = checksum.ToString();
             lblIKNumberComplete.Text = originalIKNumber + checksum.ToString();
-
-            //IKNumber = IKNumber.Remove(1, 2);
-
-          //  if (IKNumber.Length == 6)
-          //  {
-           //     checksum = calculateChecksum();
-//
-          //      lblResult.Text = MESSAGE_correct;
-          //  }
-          //  else if (IKNumber.Length == 7)
-         //   {
-           //     IKNumber= IKNumber.Remove(7);
-             //   checksum = calculateChecksum();
-                
-               // lblResult.Text = MESSAGE_correct;
-           // }
-          //  else
-          //  {
-          //      lblResult.Text = MESSAGE_wrong;
-          //  }
         }
 
         private void btnClose_Click(object sender, EventArgs e) 
