@@ -36,16 +36,18 @@
             this.btnCalculateChecksum = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblIKNumber = new System.Windows.Forms.Label();
+            this.lblIKNumberComplete = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblHeadline
             // 
             this.lblHeadline.AutoSize = true;
-            this.lblHeadline.Location = new System.Drawing.Point(221, 23);
+            this.lblHeadline.Location = new System.Drawing.Point(284, 30);
             this.lblHeadline.Name = "lblHeadline";
-            this.lblHeadline.Size = new System.Drawing.Size(338, 20);
+            this.lblHeadline.Size = new System.Drawing.Size(257, 20);
             this.lblHeadline.TabIndex = 0;
-            this.lblHeadline.Text = "Institutionskennzeichen berechnen und prüfen";
+            this.lblHeadline.Text = "Institutionskennzeichen berechnen\r\n";
             // 
             // txtBoxNumber
             // 
@@ -75,11 +77,11 @@
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(455, 125);
+            this.lblResult.Location = new System.Drawing.Point(676, 340);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(191, 20);
+            this.lblResult.Size = new System.Drawing.Size(20, 20);
             this.lblResult.TabIndex = 4;
-            this.lblResult.Text = "Die Prüfsumme ist korrekt";
+            this.lblResult.Text = "A";
             // 
             // btnCalculateChecksum
             // 
@@ -89,6 +91,7 @@
             this.btnCalculateChecksum.TabIndex = 5;
             this.btnCalculateChecksum.Text = "Berechnen";
             this.btnCalculateChecksum.UseVisualStyleBackColor = true;
+            this.btnCalculateChecksum.Click += new System.EventHandler(this.btnCalculateChecksum_Click);
             // 
             // btnRestart
             // 
@@ -98,21 +101,43 @@
             this.btnRestart.TabIndex = 6;
             this.btnRestart.Text = "Neu";
             this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(695, 388);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 36);
+            this.btnClose.Size = new System.Drawing.Size(93, 36);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Beenden";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblIKNumber
+            // 
+            this.lblIKNumber.AutoSize = true;
+            this.lblIKNumber.Location = new System.Drawing.Point(85, 170);
+            this.lblIKNumber.Name = "lblIKNumber";
+            this.lblIKNumber.Size = new System.Drawing.Size(181, 20);
+            this.lblIKNumber.TabIndex = 8;
+            this.lblIKNumber.Text = "Institutionskennzeichen:";
+            // 
+            // lblIKNumberComplete
+            // 
+            this.lblIKNumberComplete.AutoSize = true;
+            this.lblIKNumberComplete.Location = new System.Drawing.Point(310, 170);
+            this.lblIKNumberComplete.Name = "lblIKNumberComplete";
+            this.lblIKNumberComplete.Size = new System.Drawing.Size(177, 20);
+            this.lblIKNumberComplete.TabIndex = 9;
+            this.lblIKNumberComplete.Text = "Institutionskennzeichen";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblIKNumberComplete);
+            this.Controls.Add(this.lblIKNumber);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.btnCalculateChecksum);
@@ -138,6 +163,8 @@
         private System.Windows.Forms.Button btnCalculateChecksum;
         private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblIKNumber;
+        private System.Windows.Forms.Label lblIKNumberComplete;
     }
 }
 

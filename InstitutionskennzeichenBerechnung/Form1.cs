@@ -14,8 +14,10 @@ namespace InstitutionskennzeichenBerechnung
     {
         //Vordefinition Messages für die Ausgabe
         const string MESSAGE_idle = "Eigabe erwartet...";
-        const string MESSAGE_correct = "Die IK ist korrekt!";
-        const string MESSAGE_wrong = "Die IK ist inkorrekt, Berechnung nicht möglich!";
+        const string MESSAGE_correct = "Die Eingabe ist korrekt!";
+        const string MESSAGE_wrong = "Die Eingabe ist inkorrekt, Berechnung nicht möglich!";
+        const string MESSAGE_checksum = "Die Prüfziffer ist...";
+        const string MESSAGE_completeNumber = "Die komplette Nummer ist...";
 
         public Form1()
         {
@@ -27,25 +29,51 @@ namespace InstitutionskennzeichenBerechnung
             txtBoxNumber.Text = string.Empty;
             lblResult.Text = MESSAGE_idle;
         }
-
+        private int calculateChecksum(string IKNumber)
+        {
+            
+        }
         private void btnCalculateChecksum_Click(object sender, EventArgs e)
         {
             string IKNumber = txtBoxNumber.Text.Replace('.', ',');
             txtBoxNumber.Text = IKNumber;
+            string originalIKNumber = IKNumber;
+            int checksum = 0;
 
-            
-             if (IKNumber.Length == 8)
-            {
-                lblResult.Text = MESSAGE_correct;
-            }
-            else if (IKNumber.Length == 9)
-            {
-                lblResult.Text = MESSAGE_correct;
-            }
-            else
+            if (IKNumber.Length < 8 || IKNumber.Length > 9)
             {
                 lblResult.Text = MESSAGE_wrong;
+                return;
             }
+            IKNumber = IKNumber.Remove(1, 2);
+            if(IKNumber.Length == 7)
+            {
+               IKNumber = IKNumber.Remove(7);
+            }
+
+            checksum = calculateChecksum(IKNumber);
+            lblChecksum.Text = checksum.ToString();
+            lblIKNumberComplete.Text = originalIKNumber + checksum.ToString();
+
+            //IKNumber = IKNumber.Remove(1, 2);
+
+          //  if (IKNumber.Length == 6)
+          //  {
+           //     checksum = calculateChecksum();
+//
+          //      lblResult.Text = MESSAGE_correct;
+          //  }
+          //  else if (IKNumber.Length == 7)
+         //   {
+           //     IKNumber= IKNumber.Remove(7);
+             //   checksum = calculateChecksum();
+                
+               // lblResult.Text = MESSAGE_correct;
+           // }
+          //  else
+          //  {
+          //      lblResult.Text = MESSAGE_wrong;
+          //  }
         }
 
         private void btnClose_Click(object sender, EventArgs e) 
