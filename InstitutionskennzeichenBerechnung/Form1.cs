@@ -29,9 +29,18 @@ namespace InstitutionskennzeichenBerechnung
             txtBoxNumber.Text = string.Empty;
             lblResult.Text = MESSAGE_idle;
         }
-        private int calculateChecksum(string IKNumber)
+        private int CalculateChecksum(string IKNumber)
         {
-            
+            int[] weights = { 7, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int sum = 0;
+            for (int i = 0; i < 9; i++)
+            {
+                int digit = int.Parse(IKNumber.ToString());
+                sum += digit * weights[i];
+            }
+
+            int checksum = (11 - (sum % 11)) % 11;
+            return checksum;
         }
         private void btnCalculateChecksum_Click(object sender, EventArgs e)
         {
@@ -51,7 +60,7 @@ namespace InstitutionskennzeichenBerechnung
                IKNumber = IKNumber.Remove(7);
             }
 
-            checksum = calculateChecksum(IKNumber);
+            checksum = CalculateChecksum(IKNumber);
             lblChecksum.Text = checksum.ToString();
             lblIKNumberComplete.Text = originalIKNumber + checksum.ToString();
         }
