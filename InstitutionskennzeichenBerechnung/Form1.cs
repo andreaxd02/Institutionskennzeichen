@@ -28,17 +28,44 @@ namespace InstitutionskennzeichenBerechnung
             txtBoxNumber.Text = string.Empty;
             lblResult.Text = MESSAGE_idle;
         }
-        private int CalculateChecksum(string IKNumber)
+        private int CalculateChecksum8(string originalIKNumber)
         {
-           
+
             int sum = 0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < originalIKNumber.Length; i++)
             {
-                int digit = int.Parse(IKNumber.ToString());
-                sum += digit;
+                if (i % 2 == 0)  // Jede ungerade Stelle von rechts nach links
+                {
+                    sum += int.Parse(originalIKNumber[i].ToString());
+                }
+                else
+                {
+                    int digit = int.Parse(originalIKNumber[i].ToString()) * 2;
+                    sum += digit > 9 ? digit - 9 : digit;
+                }
             }
 
-            int checksum = sum % 10;
+            int checksum = (10 - (sum % 10)) % 10;
+            return checksum;
+        }
+        private int CalculateChecksum9(string originalIKNumber3)
+        {
+
+            int sum = 0;
+            for (int i = 0; i < originalIKNumber3.Length; i++)
+            {
+                if (i % 2 == 0)  // Jede ungerade Stelle von rechts nach links
+                {
+                    sum += int.Parse(originalIKNumber3[i].ToString());
+                }
+                else
+                {
+                    int digit = int.Parse(originalIKNumber3[i].ToString()) * 2;
+                    sum += digit > 9 ? digit - 9 : digit;
+                }
+            }
+
+            int checksum = (10 - (sum % 10)) % 10;
             return checksum;
         }
         private void btnCalculateChecksum_Click(object sender, EventArgs e)
@@ -55,7 +82,7 @@ namespace InstitutionskennzeichenBerechnung
             if (IKNumber.Length == 8)
             {
                 string originalIKNumber = IKNumber.Remove(0, 1);
-                checksum = CalculateChecksum(IKNumber);
+                checksum = CalculateChecksum8(originalIKNumber);
                 lblChecksum.Text = checksum.ToString();
                 lblIKNumberComplete.Text = IKNumber + checksum.ToString();
                 lblResult.Text = MESSAGE_correct;
@@ -64,16 +91,16 @@ namespace InstitutionskennzeichenBerechnung
             {
                 string originalIKNumber2 = IKNumber.Remove(8);
                 string originalIKNumber3 = originalIKNumber2.Remove(0, 1);
-                checksum = CalculateChecksum(IKNumber);
+                checksum = CalculateChecksum9(originalIKNumber3);
                 lblChecksum.Text = checksum.ToString();
                 lblIKNumberComplete.Text = originalIKNumber2 + checksum.ToString();
-                if (checksum != IKNumber[7])
+                if (IKNumber[8] == checksum)
                 {
-                    lblResult.Text = MESSAGE_wrongIKNumber;
+                    lblResult.Text = MESSAGE_correct;
                 }
                 else
                 {
-                    lblResult.Text = MESSAGE_correct;
+                    lblResult.Text = MESSAGE_wrongIKNumber;
                 }
             }
 
