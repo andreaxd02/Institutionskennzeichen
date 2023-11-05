@@ -87,7 +87,7 @@
             // 
             this.btnCalculateChecksum.Location = new System.Drawing.Point(429, 80);
             this.btnCalculateChecksum.Name = "btnCalculateChecksum";
-            this.btnCalculateChecksum.Size = new System.Drawing.Size(98, 29);
+            this.btnCalculateChecksum.Size = new System.Drawing.Size(114, 29);
             this.btnCalculateChecksum.TabIndex = 5;
             this.btnCalculateChecksum.Text = "Berechnen";
             this.btnCalculateChecksum.UseVisualStyleBackColor = true;
