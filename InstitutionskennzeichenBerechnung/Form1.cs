@@ -30,22 +30,21 @@ namespace InstitutionskennzeichenBerechnung
         }
         private int CalculateChecksum(string IKNumber)
         {
-            int[] weights = { 7, 9, 8, 7, 6, 5, 4, 3, 2 };
+           
             int sum = 0;
             for (int i = 0; i < 9; i++)
             {
                 int digit = int.Parse(IKNumber.ToString());
-                sum += digit * weights[i];
+                sum += digit;
             }
 
-            int checksum = (11 - (sum % 11)) % 11;
+            int checksum = sum % 10;
             return checksum;
         }
         private void btnCalculateChecksum_Click(object sender, EventArgs e)
         {
             string IKNumber = txtBoxNumber.Text.Replace('.', ',');
             txtBoxNumber.Text = IKNumber;
-            //string originalIKNumber = IKNumber;
             int checksum = 0;
 
             if (IKNumber.Length < 8 || IKNumber.Length > 9)
