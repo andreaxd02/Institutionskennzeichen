@@ -30,49 +30,55 @@ namespace InstitutionskennzeichenBerechnung
         }
         private int CalculateChecksum8(string originalIKNumber)
         {
-
             int sum = 0;
-            for (int i = 0; i < originalIKNumber.Length; i++)
+            bool isDouble = false; // Verfolgt, ob die aktuelle Ziffer verdoppelt werden soll.
+
+            for (int i = originalIKNumber.Length - 1; i >= 0; i--)
             {
-                if (i % 2 == 0)  // Jede ungerade Stelle von rechts nach links
+                int digit = int.Parse(originalIKNumber[i].ToString());
+
+                if (isDouble)
                 {
-                    sum += int.Parse(originalIKNumber[i].ToString());
+                    digit *= 2;
+                    if (digit > 9)
+                        digit -= 9;
                 }
-                else
-                {
-                    int digit = int.Parse(originalIKNumber[i].ToString()) * 2;
-                    sum += digit > 9 ? digit - 9 : digit;
-                }
+
+                sum += digit;
+                isDouble = !isDouble;
             }
 
-            int checksum = (10 - (sum % 10)) % 10;
+            int checksum = sum % 10;// Berechnung der Prüfziffer
             return checksum;
         }
+
         private int CalculateChecksum9(string originalIKNumber3)
         {
-
             int sum = 0;
-            for (int i = 0; i < originalIKNumber3.Length; i++)
+            bool isDouble = false; // Verfolgt, ob die aktuelle Ziffer verdoppelt werden soll.
+
+            for (int i = originalIKNumber3.Length - 1; i >= 0; i--)
             {
-                if (i % 2 == 0)  // Jede ungerade Stelle von rechts nach links
+                int digit = int.Parse(originalIKNumber3[i].ToString());
+
+                if (isDouble)
                 {
-                    sum += int.Parse(originalIKNumber3[i].ToString());
+                    digit *= 2;
+                    if (digit > 9)
+                        digit -= 9;
                 }
-                else
-                {
-                    int digit = int.Parse(originalIKNumber3[i].ToString()) * 2;
-                    sum += digit > 9 ? digit - 9 : digit;
-                }
+
+                sum += digit;
+                isDouble = !isDouble;
             }
 
-            int checksum = (10 - (sum % 10)) % 10;
+            int checksum = sum % 10;// Berechnung der Prüfziffer
             return checksum;
         }
         private void btnCalculateChecksum_Click(object sender, EventArgs e)
         {
             string IKNumber = txtBoxNumber.Text.Replace('.', ',');
             txtBoxNumber.Text = IKNumber;
-            int checksum = 0;
 
             if (IKNumber.Length < 8 || IKNumber.Length > 9)
             {
@@ -81,8 +87,8 @@ namespace InstitutionskennzeichenBerechnung
             }
             if (IKNumber.Length == 8)
             {
-                string originalIKNumber = IKNumber.Remove(0, 1);
-                checksum = CalculateChecksum8(originalIKNumber);
+                string originalIKNumber = IKNumber.Substring(2);
+                int checksum = CalculateChecksum8(originalIKNumber);
                 lblChecksum.Text = checksum.ToString();
                 lblIKNumberComplete.Text = IKNumber + checksum.ToString();
                 lblResult.Text = MESSAGE_correct;
@@ -90,17 +96,17 @@ namespace InstitutionskennzeichenBerechnung
             else if (IKNumber.Length == 9)
             {
                 string originalIKNumber2 = IKNumber.Remove(8);
-                string originalIKNumber3 = originalIKNumber2.Remove(0, 1);
-                checksum = CalculateChecksum9(originalIKNumber3);
+                string originalIKNumber3 = originalIKNumber2.Substring(2);
+                int checksum = CalculateChecksum9(originalIKNumber3);
                 lblChecksum.Text = checksum.ToString();
                 lblIKNumberComplete.Text = originalIKNumber2 + checksum.ToString();
-                if (IKNumber[8] == checksum)
+                if (checksum != IKNumber[8])
                 {
-                    lblResult.Text = MESSAGE_correct;
+                    lblResult.Text = MESSAGE_wrongIKNumber;
                 }
                 else
                 {
-                    lblResult.Text = MESSAGE_wrongIKNumber;
+                    lblResult.Text = MESSAGE_correct;
                 }
             }
 
