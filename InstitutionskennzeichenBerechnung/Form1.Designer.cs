@@ -77,11 +77,10 @@
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(676, 340);
+            this.lblResult.Location = new System.Drawing.Point(355, 377);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(20, 20);
+            this.lblResult.Size = new System.Drawing.Size(0, 30);
             this.lblResult.TabIndex = 4;
-            this.lblResult.Text = "A";
             // 
             // btnCalculateChecksum
             // 
